@@ -64,6 +64,16 @@ Runtime **GPU de Google Colab** (NVIDIA T4). Dependencias: `cudf-cu12`, `cuml-cu
 3. Ejecutar `Actividad_4.ipynb` de arriba abajo. Las tablas quedan en `results/`, las matrices en
    `resultados_matrices/` y las figuras del informe en `figuras/`.
 
+## Resultados
+Ejecutado en Google Colab (GPU Tesla T4) sobre 27,802 instancias únicas (razón de desbalance ≈ 2:1):
+
+- El desbalance perjudicó **solo al Random Forest** (baseline macro-F1 0.795, balanced-acc 0.756). Las tres
+  técnicas de muestreo lo rescatan; la mejor fue el **submuestreo aleatorio** (macro-F1 0.896, balanced-acc
+  0.900: +10 y +14 pp) y, además, la más rápida.
+- `LogisticRegression` y `SVC` ya eran robustos al desbalance (~0.95–0.96) y el muestreo no los mejora.
+- **Muestreo en paralelo:** speedup ≈ 0.8× (el costo de IPC domina sobre un cómputo minúsculo).
+
+Ver el informe completo en Obsidian: `PLN (MUESTREO) - CORTE 2.md`.
+
 ## Estado
-🛠️ Código completo y listo para ejecutar en Colab. Las cifras y figuras del informe se generan al correr el
-notebook (el equipo local no tiene GPU).
+✅ Completo — notebook ejecutado en Colab, resultados y figuras generados, informe redactado.
